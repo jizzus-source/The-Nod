@@ -24,3 +24,14 @@ a {
     background: black;
   }
 }
+
+@font-face {
+  font-family: DiscgentOutline;
+  src: local(DiscgentOutline-Regular-),
+    url(/path/to/DiscgentOutline-Regular-.woff2) format("woff2"),
+    url(/path/to/DiscgentOutline-Regular-.woff) format("woff"),
+    url(/path/to/DiscgentOutline-Regular-.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
