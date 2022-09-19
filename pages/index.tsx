@@ -1,36 +1,28 @@
 import type { NextPage } from 'next';
+import { useContext } from 'react';
 import styled from "styled-components";
+import { AlertContext } from '../components/alert';
+import { AlertType } from '../components/alertModal';
 import Icon from '../components/icon';
+import LoginModal from '../components/register-modal';
+
+
+
+
 
 const MainContainer = styled.div`
     height: 100vh;
-    padding: 0px;
-    margin: 0px;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    overflow-y: hidden;
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+
 `;
 const PortraitImage = styled(Icon)`
   width: 100vw;
   height: 100vh;
+`;
 
-`;
-const TopLeftBar = styled.div`
-    position: absolute;
-    top: 10px;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    width: 50vw;
-`;
 const HomeContainer = styled.div`
 position: relative;
 width: 100vw;
@@ -38,53 +30,49 @@ display: flex;
 align-items: center;
 justify-content: center;
 `;
+const TopLeftBar = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+`;
 const TopIconContainer = styled.div`
-align-items: center;
+    align-items: center;
     justify-content: flex-start;
 
 `
 const TopRightIcon = styled(Icon)`
-width: 10vw;
+width: 20vw;
 height: 10vh;
 `;
 const TopLeftIcons = styled(Icon)`
-width: 3vw;
+width: 5vw;
 height: 3vh;
 `;
 const BodyContainer = styled.div`
-width:80vw;
-height:90vh;
+width:100vw;
+height:100vh;
 position: absolute;
 display: flex;
 align-items: center;
-justify-content: center;
-top: 2vh;
-`;
-const TopRightBar = styled.div`
-position: absolute;
-top: 10px;
-left: 0;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: flex-end;
-width: 80vw;
+justify-content: space-evenly;
+flex-direction: column;
+top:0rem;
 `;
 const PrinpcipalTitleContainer = styled.div`
-position: absolute;
-top: 15vh;
-left: 0;
 display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: center;
-width: 80vw;
+max-width:699px;
+min-width:300px;
 `;
 const PrincipalTitle = styled.div`
  font-family: Discgent;
 flex-direction: row;
 display: flex;
-  font-size: 90px;
+  font-size: 50px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -92,31 +80,30 @@ display: flex;
   letter-spacing: normal;
   text-align: center;
   color: #fff;
-`;
-const Letter = styled.div`
-margin-right:30px;
-margin-left:30px;
+  
 `;
 
 const CenterIconContainer = styled.div`
-position: absolute;
-top: 15vh;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
 `;
 
 const CenterIcon = styled(Icon)`
-width:25vw;
+position:absolute;
 `;
 const CollectionIcon = styled(Icon)`
-width:10vw;
-margin-left:10rem;
-margin-top:10rem;
+position:absolute;
+margin-left:7rem;
+margin-bottom:3rem;
 `;
 const SubtitleContainer = styled.div`
-margin-top:20rem;
+
 `;
 
 const SubTitle = styled.div`
-  font-size: 50px;
+  font-size: 40px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -126,10 +113,11 @@ const SubTitle = styled.div`
   color: #fff;`;
 
 const SmallTextContainer = styled.div`
-position: absolute;
-bottom: 5vh;
+margin-bottom:2rem;
 flex-direction: row;
-display: flex;`;
+display: flex;
+width:70vw;
+justify-content: space-between`;
 const SmallText = styled.div`
 font-family: Discgent;
   font-size: 20px;
@@ -142,15 +130,14 @@ font-family: Discgent;
   color: #fff;
 `;
 const Button = styled.div`
-    margin-left:5rem;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     user-select: none;
     color:green;
-    gap: 10px;
     white-space: nowrap;
     background-color:transparent;
+    user-select: none;
 `;
 const Footer = styled.div`
 position: absolute;
@@ -162,7 +149,25 @@ color:black;
 width:100vw;
 justify-content: center;`; 
 
-const Home: NextPage = () => {
+
+
+const Home = () => {
+  const alertContext: any = useContext(AlertContext);
+  function handleLoginButton() {
+    const content: any = (
+        <LoginModal onClickLogin={({ username, email }: { username: string, email: string }) => handleLoginPrimary({ username, email })} onClose={alertContext.closeAlert} />
+    );
+    console.log(alertContext.createAlert)
+    alertContext.createAlert({ type: AlertType.CUSTOM, content: content });
+   
+}
+
+function handleLoginPrimary({ username, email }: { username: string, email: string }) {
+    if (username != "" && email != "") {
+    } else {
+        alertContext.createAlert({ type: AlertType.FAILURE, title: "Error en los datos", message: "Debes ingresar todos los datos solicitados" });
+    }
+}
   return (
     <MainContainer>
       <HomeContainer>
@@ -171,25 +176,23 @@ const Home: NextPage = () => {
       <TopLeftBar>
         <TopIconContainer><TopRightIcon name={"logo.png"}/>
         </TopIconContainer>
-      </TopLeftBar>
-      <TopRightBar>
         <TopIconContainer>
           <TopLeftIcons name={"insta.svg"}/>
           <TopLeftIcons name={"discord.svg"}/>
           <TopLeftIcons name={"twitter.svg"}/>
           <TopLeftIcons name={"language.svg"}/>
         </TopIconContainer>
-      </TopRightBar>
+      </TopLeftBar>
         <PrinpcipalTitleContainer>
             <PrincipalTitle>
-              FRIENDS <Letter> & </Letter> FAMILY
+              FRIENDS & FAMILY
             </PrincipalTitle>
         </PrinpcipalTitleContainer>
         <CenterIconContainer>
-          <CenterIcon name={"nft.png"}/>
+          <CenterIcon height={"150px"} name={"nft.png"}/>
         </CenterIconContainer>
         <CenterIconContainer>
-          <CollectionIcon name={"collection.png"}/>
+          <CollectionIcon height={"60px"} name={"collection.png"}/>
         </CenterIconContainer>
         <SubtitleContainer>
           <SubTitle>
@@ -201,7 +204,7 @@ const Home: NextPage = () => {
           <SmallText>
           JOIN THE WHITELIST TO PARTICIPATE FOR AN EXCLUSIVE AIRDROP
           </SmallText>
-          <Button>Join Now</Button>
+          <Button  onClick={handleLoginButton}>Join Now</Button>
         </SmallTextContainer>
        
       </BodyContainer>
