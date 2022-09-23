@@ -17,15 +17,17 @@ interface Props {
 }
 
 const LoginModalContainer = styled.div`
-background-color:black;
+background-color:transparent;
 display: flex;
-flex-direction: column;
+flex-direction: row;
 align-items: center;
-width: 100vw;
+
 `;
 
 const TitleContainer = styled.div `
-    margin: 20px 0 20px 0;
+    margin: 20px 0 40px 0;
+    min-width:20vw;
+    
 `;
 
 const Title = styled.span ` 
@@ -33,6 +35,7 @@ const Title = styled.span `
     color:white;
     font-size: 50px;
     text-align: center;
+ 
 `;
 const Form = styled.div`
     display: flex;
@@ -41,17 +44,38 @@ const Form = styled.div`
     gap: 20px;
 `;
 const LoginModalContent = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-left:20px;
 `;
 
 const IconContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:10px;
 `;
 const MetaIcon = styled(Icon)`
 cursor:pointer;
-max-width:10vw;`
+max-width:15vw;`;
 
+const RegisterIcon = styled(Icon)`
+width:100%;
+`;
+const RegisterIconContainer = styled.div`
+width:15vw;
+`;
+const FormContainer = styled.div`
+display: flex;
+flex-direction: row;
+
+`
 const LoginModal = (props: Props) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+    const [country, setCountry] = useState("");
+    const [phone, setPhone] = useState("");
     function handleRegister(){
         if(username!="" && email!=""){
             props.onClickLogin({username, email});
@@ -61,6 +85,9 @@ const LoginModal = (props: Props) => {
     console.log(provider())
     return(
         <LoginModalContainer>
+            <RegisterIconContainer>
+                <RegisterIcon  name="register-picture.png" />
+            </RegisterIconContainer>
             <LoginModalContent>
             <TitleContainer>
                 <Title>JOIN NOW</Title>
@@ -68,12 +95,16 @@ const LoginModal = (props: Props) => {
             <Form>
                 <FormInput value={username} onChange={(value: string)=>setUsername(value)} placeholder="Full Name" type={InputTypes.TEXT} />
                 <FormInput value={email} onChange={(value: string)=>setEmail(value)} placeholder="Email" type={InputTypes.TEXT} />
+                <FormContainer>
+                <FormInput value={country} onChange={(value: string)=>setCountry(value)} placeholder="Country" type={InputTypes.TEXT} />
+                <FormInput value={phone} onChange={(value: string)=>setPhone(value)} placeholder="Phone" type={InputTypes.TEXT} />
+                </FormContainer>
+                <IconContainer>
+                <MetaIcon name="meta.png"/>
                 <RegularButton text="Submit" onClick={handleRegister} />
+                </IconContainer>
             </Form>
             </LoginModalContent>
-            <IconContainer>
-                <MetaIcon name="meta.png"/>
-            </IconContainer>
         </LoginModalContainer>
     );
 }

@@ -44,8 +44,8 @@ const Input = styled.input`
 const Label = styled.label`
     position: absolute;
     font-size: 20px;
-    top: -8px;
-    background: black;
+    top: -20px;
+    background: transparent;
 `;
 
 const InputContainer = styled.div.attrs((props: { width: string, minWidth: string }) => props)`
