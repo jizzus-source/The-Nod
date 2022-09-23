@@ -36,11 +36,12 @@ export enum AlertType {
 
 const MainScreenContainer = styled.div.attrs((props: {show: boolean})=>props)`
     flex: 1;
+    backdrop-filter: blur(2px);
     display: ${props=>props.show?"flex":"none"};
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #00000094;
     position: absolute;
     top: 0;
     left: 0;
@@ -55,7 +56,7 @@ const ModalContainer = styled.div.attrs((props: {width: string})=>props) `
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    background-color: black;
+    background-color: white;
     align-items: center;
     text-align: left;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -63,13 +64,13 @@ const ModalContainer = styled.div.attrs((props: {width: string})=>props) `
     gap: 20px;
 `;
 const ModalRegisterContainer = styled.div.attrs((props: {width: string})=>props) `
-width: ${props=>props.width?props.width:"30%"};
+width: ${props=>props.width?props.width:"50%"};
 height: fit-content;
-min-width: 300px;
+min-width: 600px;
 display: flex;
 flex-direction: column;
 border-radius: 5px;
-background-color: black;
+background-color:#333333;
 align-items: center;
 text-align: left;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

@@ -29,6 +29,7 @@ const ButtonContainer = styled.div.attrs((props: {disabled: boolean, width?: str
     gap: 10px;
     white-space: nowrap;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-width:15vw;
 `;
 
 const RegularButton = (props: Props) => {
