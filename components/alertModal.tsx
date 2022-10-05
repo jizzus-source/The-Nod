@@ -64,9 +64,8 @@ const ModalContainer = styled.div.attrs((props: {width: string})=>props) `
     gap: 20px;
 `;
 const ModalRegisterContainer = styled.div.attrs((props: {width: string})=>props) `
-width: ${props=>props.width?props.width:"50%"};
+width: ${props=>props.width?props.width:"50vw"};
 height: fit-content;
-min-width: 600px;
 display: flex;
 flex-direction: column;
 border-radius: 5px;
