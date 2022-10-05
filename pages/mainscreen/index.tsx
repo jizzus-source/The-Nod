@@ -1,12 +1,10 @@
+
 import type { NextPage } from 'next';
-import router from 'next/router';
 import { useContext } from 'react';
 import styled from "styled-components";
-import { AlertContext } from '../components/alert';
-import { AlertType } from '../components/alertModal';
-import Icon from '../components/icon';
-import LoginModal from '../components/register-modal';
-
+import { useRouter } from "next/router";
+import Icon from '../../components/icon';
+import LoginModal from '../../components/register-modal';
 
 
 
@@ -24,7 +22,7 @@ const PortraitImage = styled(Icon)`
   height: 100vh;
 `;
 
-const HomeContainer = styled.div`
+const MainScreenContainer = styled.div`
 position: relative;
 width: 100vw;
 display: flex;
@@ -37,6 +35,8 @@ const TopLeftBar = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 80vw;
+    top:0;
+    position:absolute;
 `;
 const TopIconContainer = styled.div`
     align-items: center;
@@ -44,7 +44,7 @@ const TopIconContainer = styled.div`
 
 `
 const TopRightIcon = styled(Icon)`
-width: 20vw;
+width: 15vw;
 height: 10vh;
 `;
 const TopLeftIcons = styled(Icon)`
@@ -52,28 +52,29 @@ width: 5vw;
 height: 3vh;
 `;
 const BodyContainer = styled.div`
-width:100vw;
-height:100vh;
+width:50vw;
+height:50vh;
 position: absolute;
 display: flex;
 align-items: center;
-justify-content: space-evenly;
+justify-content: center;
 flex-direction: column;
-top:0rem;
+top:5rem;
 `;
 const PrinpcipalTitleContainer = styled.div`
 display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: center;
-max-width:699px;
-min-width:300px;
+
+
+
 `;
 const PrincipalTitle = styled.div`
  font-family: Discgent;
 flex-direction: row;
 display: flex;
-  font-size: 50px;
+  font-size: 10vw;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -93,16 +94,14 @@ justify-content: center;
 
 const CenterIcon = styled(Icon)`
 position:absolute;
+width:20vw;
 `;
 const CollectionIcon = styled(Icon)`
 position:absolute;
+width:8vw;
 margin-left:7rem;
-margin-bottom:3rem;
+margin-top:7rem;
 `;
-const SubtitleContainer = styled.div`
-
-`;
-
 const SubTitle = styled.div`
   font-size: 40px;
   font-weight: normal;
@@ -114,11 +113,12 @@ const SubTitle = styled.div`
   color: #fff;`;
 
 const SmallTextContainer = styled.div`
-margin-bottom:2rem;
-flex-direction: row;
+position:absolute;
+flex-direction: column;
 display: flex;
-width:70vw;
-justify-content: space-between`;
+align-items: center;
+justify-content: space-between;
+bottom:10vh;`;
 const SmallText = styled.div`
 font-family: Discgent;
   font-size: 20px;
@@ -130,14 +130,14 @@ font-family: Discgent;
   text-align: left;
   color: #fff;
 `;
-const Button = styled.div`
+const Button = styled.button`
+font-family:Discgent;
+    font-size:2vw;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     user-select: none;
-    color:green;
-    white-space: nowrap;
-    background-color:transparent;
+    background: linear-gradient(to right, rgb(63,164,178), rgb(68,23,131));
     user-select: none;
 `;
 const Footer = styled.div`
@@ -149,72 +149,56 @@ background-color:#73e637;
 color:black;
 width:100vw;
 justify-content: center;`; 
+const IconsContainer = styled.div`
+margin-top:6rem;
+`;
 
 
+const MainScreen = () => {
+  const router = useRouter();
 
-const Home = () => {
-  const alertContext: any = useContext(AlertContext);
-  function handleLoginButton() {
-    const content: any = (
-        <LoginModal onClickLogin={({ username, email }: { username: string, email: string }) => handleLoginPrimary({ username, email })} onClose={alertContext.closeAlert} />
-    );
-    alertContext.createAlert({ type: AlertType.CUSTOM, content: content });
-   
-}
 
-function handleLoginPrimary({ username, email }: { username: string, email: string }) {
-    if (username != "" && email != "") {
-    } else {
-        alertContext.createAlert({ type: AlertType.FAILURE, title: "Error en los datos", message: "Debes ingresar todos los datos solicitados" });
-    }
-}
-  return (
-    <MainContainer>
-      <HomeContainer>
-        <PortraitImage name={"land.jpg"}/>
-      <BodyContainer>
-      <TopLeftBar>
-        <TopIconContainer><TopRightIcon name={"logo.png"}/>
-        </TopIconContainer>
+return(
+        <MainContainer>
+            <MainScreenContainer>
+            <PortraitImage name={"landing-intro.png"}/>
+            <TopLeftBar>
         <TopIconContainer>
-          <TopLeftIcons name={"insta.svg"}/>
-          <TopLeftIcons name={"discord.svg"}/>
-          <TopLeftIcons name={"twitter.svg"}/>
-          <TopLeftIcons name={"language.svg"}/>
+            <TopRightIcon name={"logo.png"}/>
         </TopIconContainer>
-      </TopLeftBar>
-        <PrinpcipalTitleContainer>
+            <TopIconContainer>
+                <TopLeftIcons name={"insta.svg"}/>
+                <TopLeftIcons name={"discord.svg"}/>
+                <TopLeftIcons name={"twitter.svg"}/>
+                <TopLeftIcons name={"language.svg"}/>
+            </TopIconContainer>
+                </TopLeftBar>
+            <BodyContainer>
+           
+                <PrinpcipalTitleContainer>
             <PrincipalTitle>
               FRIENDS & FAMILY
             </PrincipalTitle>
         </PrinpcipalTitleContainer>
+        <IconsContainer>
         <CenterIconContainer>
-          <CenterIcon height={"150px"} name={"nft.png"}/>
+          <CenterIcon  name={"nft.png"}/>
         </CenterIconContainer>
         <CenterIconContainer>
-          <CollectionIcon height={"60px"} name={"collection.png"}/>
+          <CollectionIcon  name={"collection.png"}/>
         </CenterIconContainer>
-        <SubtitleContainer>
-          <SubTitle>
-          AUTHENTICATED SNEAKERS FOR
-          AUTHENTIC SNEAKERHEADS.
-          </SubTitle>
-        </SubtitleContainer>
-        <SmallTextContainer>
-          <SmallText>
-          JOIN THE WHITELIST TO PARTICIPATE FOR AN EXCLUSIVE AIRDROP
-          </SmallText>
-          <Button  onClick={handleLoginButton}>Join Now</Button>
-          <Button  onClick={()=> router.push({pathname:`mainscreen/`})}>Buy Now</Button>
+        </IconsContainer>
+        
+            </BodyContainer>
+            <SmallTextContainer>
+          <Button onClick={()=> router.push({pathname:`landing/`})}>Join Now</Button>
         </SmallTextContainer>
-       
-      </BodyContainer>
-      <Footer>
+            </MainScreenContainer>
+            <Footer>
       THE NOD 2022. ALL RIGHTS RESERVED.
       </Footer>
-      </HomeContainer>
-    </MainContainer>
-  )
+        </MainContainer>
+)
 }
 
-export default Home
+export default MainScreen
