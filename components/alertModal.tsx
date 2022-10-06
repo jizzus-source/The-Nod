@@ -113,7 +113,7 @@ const AlertModal = (props: Props) => {
                         <></>
                         :
                         <IconContainer>
-                                <Icon  onClick={props.onClose} width={"10px"} name={"close.svg"} className={"close.svg"} />
+                                <Icon  onClick={props.onClose} width={"10px"} name={"close.svg"} /*className={"close.svg"}*/ />
                         </IconContainer>
                         }
                         <Icon name={"check"} width={"40px"} />

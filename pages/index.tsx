@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { AlertContext } from '../components/alert';
 import { AlertType } from '../components/alertModal';
 import Icon from '../components/icon';
+import { buy } from '../components/metamask';
 import LoginModal from '../components/register-modal';
 
 
@@ -170,6 +171,7 @@ function handleLoginPrimary({ username, email }: { username: string, email: stri
 }
   return (
     <MainContainer>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
       <HomeContainer>
         <PortraitImage name={"land.jpg"}/>
       <BodyContainer>
@@ -205,7 +207,10 @@ function handleLoginPrimary({ username, email }: { username: string, email: stri
           JOIN THE WHITELIST TO PARTICIPATE FOR AN EXCLUSIVE AIRDROP
           </SmallText>
           <Button  onClick={handleLoginButton}>Join Now</Button>
-          <Button  onClick={()=> router.push({pathname:`mainscreen/`})}>Buy Now</Button>
+          <Button  onClick={async ()=> {
+            // router.push({pathname:`mainscreen/`}
+            await buy(1);
+          }}>Buy Now</Button>
         </SmallTextContainer>
        
       </BodyContainer>
