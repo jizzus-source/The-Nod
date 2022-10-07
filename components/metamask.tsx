@@ -61,6 +61,11 @@ export async function allowance () {
     return await TokenContract.allowance(await ethAccount(), SELLER_ADDRESS);
 }
 
+export async function balance () {
+    await provider();
+    return await TokenContract.balanceOf(await ethAccount());
+}
+
 export async function approve () {
     await provider();
     return await TokenContract.approve(SELLER_ADDRESS, MAX_INT);
@@ -94,6 +99,10 @@ export async function buy (rarity: number) {
 
     if ((await allowance()).lt(price)) {
         (await approve()).wait();
+    }
+
+    if ((await balance()).lt(price)) {
+        throw new Error("You don't have enough USDT to buy this item.");
     }
 
     return await SellerContract.buy(rarity);

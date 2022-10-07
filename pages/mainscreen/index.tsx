@@ -13,11 +13,19 @@ const MainContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
 `;
 const PortraitImage = styled(Icon)`
-  width: 100vw;
-  height: 100vh;
+  width: 110vw;
+  z-index: -3 !important;
+  filter: blur(0.125rem);
+`;
+
+const CharaImage = styled(Icon)`
+  width: 75vw;
+  position: fixed;
+  top: 14vh;
+  left: 50vw;
+  z-index: -1 !important;
 `;
 
 const MainScreenContainer = styled.div`
@@ -41,13 +49,13 @@ const TopIconContainer = styled.div`
 
 `
 const TopRightIcon = styled(Icon)`
+margin-top: 2vh;
 width: 15vw;
-height: 10vh;
 `;
 const TopLeftIcons = styled(Icon)`
-width: 5vw;
-cursor:pointer;
-height: 3vh;
+  width: 5vw;
+  cursor:pointer;
+  height: 3vh;
 `;
 const BodyContainer = styled.div`
 width:50vw;
@@ -69,10 +77,11 @@ justify-content: center;
 
 `;
 const PrincipalTitle = styled.div`
- font-family: Discgent;
-flex-direction: row;
-display: flex;
-  font-size: 10vw;
+  font-family: discgent;
+  flex-direction: row;
+  display: flex;
+  margin-top: 8vw;
+  font-size: 6vw;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -118,7 +127,7 @@ align-items: center;
 justify-content: space-between;
 bottom:10vh;`;
 const SmallText = styled.div`
-font-family: Discgent;
+  font-family: Discgent;
   font-size: 20px;
   font-weight: normal;
   font-stretch: normal;
@@ -129,17 +138,26 @@ font-family: Discgent;
   color: #fff;
 `;
 const Button = styled.button`
-font-family:Discgent;
-    font-size:2vw;
+    font-family:discgent;
+    font-size:2vh;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 30px;
+    position: fixed;
+    
+    width: 20vw;
+    height: 5vh;
+    top: 80vh;
+    left: 50vwpx;
+
+    padding-top: 0.5vh;
+    color: white;
     user-select: none;
     background: linear-gradient(to right, rgb(63,164,178), rgb(68,23,131));
     user-select: none;
 `;
 const Footer = styled.div`
-position: absolute;
+position: fixed;
 bottom: 0vh;
 flex-direction: row;
 display: flex;
@@ -159,42 +177,43 @@ const MainScreen = () => {
 return(
         <MainContainer>
             <MainScreenContainer>
-            <PortraitImage name={"landing-intro.png"}/>
+            <PortraitImage name={"landing-intro.png"} className="main-portrait"/>
             <TopLeftBar>
         <TopIconContainer>
-            <TopRightIcon name={"logo.png"}/>
+            <TopRightIcon name={"logo.png"} className="main-logo"/>
         </TopIconContainer>
-            <TopIconContainer>
-                <TopLeftIcons name={"insta.svg"}    onClick={() => window.open("https://www.instagram.com/snkrthenod.io/")}/>
-                <TopLeftIcons name={"discord.svg"}  onClick={() => window.open("https://discord.gg/ZnDvG7US")}/>
-                <TopLeftIcons name={"twitter.svg"}  onClick={() => window.open("https://twitter.com/snkrthenod_io")}/>
-                <TopLeftIcons name={"language.svg"}/>
+            <TopIconContainer className="main-icons">
+                <TopLeftIcons name={"insta.svg"}    onClick={() => window.open("https://www.instagram.com/snkrthenod.io/")} className="main-icon"/>
+                <TopLeftIcons name={"discord.svg"}  onClick={() => window.open("https://discord.gg/ZnDvG7US")} className="main-icon"/>
+                <TopLeftIcons name={"twitter.svg"}  onClick={() => window.open("https://twitter.com/snkrthenod_io")} className="main-icon"/>
+                <TopLeftIcons name={"language.svg"} className="main-icon"/>
             </TopIconContainer>
                 </TopLeftBar>
             <BodyContainer>
            
                 <PrinpcipalTitleContainer>
-            <PrincipalTitle>
+            <PrincipalTitle className="main-fnf">
               FRIENDS & FAMILY
             </PrincipalTitle>
         </PrinpcipalTitleContainer>
         <IconsContainer>
         <CenterIconContainer>
-          <CenterIcon  name={"nft.png"}/>
+          <CenterIcon  name={"nft.png"} className="main-nftword"/>
         </CenterIconContainer>
         <CenterIconContainer>
-          <CollectionIcon  name={"collection.png"}/>
+          <CollectionIcon  name={"collection.png"} className="main-watermark"/>
         </CenterIconContainer>
         </IconsContainer>
         
             </BodyContainer>
             <SmallTextContainer>
-          <Button onClick={()=> router.push({pathname:`landing/`})}>Enter Now</Button>
+          <Button onClick={()=> router.push({pathname:`landing/`})} className="main-enternow">Enter Now</Button>
         </SmallTextContainer>
             </MainScreenContainer>
             <Footer>
       THE NOD 2022. ALL RIGHTS RESERVED.
       </Footer>
+            <CharaImage name={"character.png"} className="main-chara"/>
         </MainContainer>
 )
 }
