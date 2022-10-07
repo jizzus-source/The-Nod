@@ -51,7 +51,7 @@ const TopLeftBar = styled.div`
 const TopIconContainer = styled.div`
     display:flex;
     align-items: center;
-    gap:1em;
+    gap:0.4em;
 `
 const TopRightIcon = styled(Icon)`
 max-width: 15vw;
@@ -59,7 +59,7 @@ max-height: 10vh;
 `;
 const TopLeftIcons = styled(Icon)`
 cursor:pointer;
-max-width: 5vw;
+max-width: 2vw;
 max-height: 3vh;
 `;
 const BodyContainer = styled.div`
@@ -169,7 +169,7 @@ const IconsContainer = styled.div`
 margin-top:6rem;
 `;
 const TopMenuContainer =styled.div`
-gap:1em;
+gap:0.5em;
 display:flex;
 align-items: center;
 
@@ -195,6 +195,7 @@ gap:1rem;
 `;
 const CollabsIcons=styled(Icon)`
 width:20vw;
+cursor:pointer;
 `;
 const NodInfoContainer=styled.div`
 display:flex;
@@ -333,7 +334,7 @@ return(
                 Alliances
             </Button>
         </TopMenuContainer>
-        <TopIconContainer>
+        <TopIconContainer className="main-icons">
         <TopLeftIcons name={"opensea.svg"}/>
             <TopLeftIcons name={"insta.svg"}  onClick={() => window.open("https://www.instagram.com/snkrthenod.io/")}/>
             <TopLeftIcons name={"discord.svg"  } onClick={() => window.open("https://discord.gg/ZnDvG7US")}/>
@@ -348,10 +349,12 @@ return(
             <BackgroundImage name={"nod_back.png"}/>
                 <PrincipalContainer>
                 <PrincipalTitle>OUR COLLABS</PrincipalTitle>    
-                <CollabsContainer>
-                    <CollabsIcons name={"collab-1.png"}/>
-                    <CollabsIcons name={"collab-2.png"}/>
-                    <CollabsIcons name={"collab-3.png"}/>
+                <CollabsContainer className="landing-collab-container">
+                    <CollabsIcons name={"collab-1.png"} onClick={() => window.open("https://www.instagram.com/zionylennox/")}/>
+                    <CollabsIcons name={"collab-2.png"} onClick={() => window.open("https://www.instagram.com/phraa/")}/>
+                    <CollabsIcons name={"collab-3.png"} onClick={() => window.open("https://www.instagram.com/djmkc/")}/>
+                    <CollabsIcons name={"collab-4.png"} onClick={() => window.open("https://www.instagram.com/guache_art/")}/>
+                    <CollabsIcons name={"collab-5.png"} onClick={() => window.open("https://www.instagram.com/sneakerzinecol/")}/>
                 </CollabsContainer>
                 
                 <PrincipalTitle><div>
