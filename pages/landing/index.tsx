@@ -7,7 +7,10 @@ import Icon from '../../components/icon';
 import LoginModal from '../../components/register-modal';
 import { buy, provider } from '../../components/metamask';
 
+import * as lodash from "lodash";
 
+
+((global || window) as any)._ = lodash;
 
 
 const MainContainer = styled.div`
@@ -299,6 +302,7 @@ function handleMeta(){
 return(
 
         <MainContainer>
+            <script type="text/javascript" src="https//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
             <MainScreenContainer>
             <PortraitImage name={"landing-icon.png"}/>
             <TopLeftBar>
@@ -385,7 +389,7 @@ return(
                 </NodInfoContainer>
                 <NodBoxesBox>
                 <NodBoxesContainer>
-                    <BoxIcon name={"box-1.png"}/>
+                    <BoxIcon name={"CAJA_1.gif"}/>
 
                     <NodBoxesContent>
                     <BoxTitle>DeadStock</BoxTitle>
@@ -400,7 +404,7 @@ return(
                     </NodBoxesContent>
                 </NodBoxesContainer>
                 <NodBoxesContainer>
-                    <BoxIcon name={"box-2.png"}/>
+                    <BoxIcon name={"CAJA_2.gif"}/>
 
                     <NodBoxesContent>
                     <BoxTitle>HOLY GRAIL</BoxTitle>
@@ -416,7 +420,7 @@ return(
                     </NodBoxesContent>
                 </NodBoxesContainer>
                 <NodBoxesContainer>
-                    <BoxIcon name={"box-3.png"}/>
+                    <BoxIcon name={"CAJA_3.gif"}/>
 
                     <NodBoxesContent>
                     <BoxTitle>GOAT</BoxTitle>
