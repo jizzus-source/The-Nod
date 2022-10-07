@@ -5,10 +5,11 @@ import { AlertContext } from '../components/alert';
 import { AlertType } from '../components/alertModal';
 import Icon from '../components/icon';
 import LoginModal from '../components/register-modal';
+import MainScreen from './mainscreen';
+import * as lodash from "lodash";
 
 
-
-
+((global || window) as any)._ = lodash;
 
 const MainContainer = styled.div`
     height: 100vh;

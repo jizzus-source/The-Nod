@@ -188,7 +188,7 @@ return(
         
             </BodyContainer>
             <SmallTextContainer>
-          <Button onClick={()=> router.push({pathname:`landing/`})}>Join Now</Button>
+          <Button onClick={()=> router.push({pathname:`landing/`})}>Enter Now</Button>
         </SmallTextContainer>
             </MainScreenContainer>
             <Footer>
