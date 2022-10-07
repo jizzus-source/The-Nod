@@ -131,20 +131,20 @@ align-items: center;
 justify-content: space-between;
 bottom:10vh;`;
 const SmallText = styled.div`
-display:flex;
-flex-direction:row;
-flex-wrap: wrap;
-justify-content: flex-start;
-font-family: Monserrat;
-  font-size: 1.4vw;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.17;
-  letter-spacing: normal;
-  text-align: left;
-  color: #fff;
-
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-family: discgent;
+    font-size: 0.8vw;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.17;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
+    
 `;
 const Button = styled.div`
 display:flex;
@@ -210,7 +210,7 @@ const NodInfo =styled.div`
     border:1px solid rgba(115, 205, 55, 0.5);
     align-items: flex-start;
     justify-content: center;
-    border-raz|1dius: 5px;
+    border-razdius: 5px;
 `;
 const NodBack=styled(Icon)`
 max-width:20vw;
@@ -220,13 +220,13 @@ const NodBoxesContainer=styled.div`
 display:flex;
 flex-direction:row;
 margin-top:4rem;
-border:1px solid #ccccb3;
+border:2px solid #ccccb3;
 background-color: #333;
 width: 70vw;
 align-items: center;
 `
 const BoxIcon=styled(Icon)`
-border:1px solid #ccccb3;
+border-right:2px solid #ccccb3;
 width:30vw;
 `;
 const NodBoxesContent=styled.div`
@@ -238,8 +238,8 @@ align-items: center;
 const SmallTextGreen=styled.div`
 margin-right:10px;
 margin-left:10px;
-font-family: Monserrat;
-  font-size: 1.4vw;
+font-family: discgent;
+  font-size: 0.8vw;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -249,13 +249,15 @@ font-family: Monserrat;
   color: #73cd37;
 `;
 const BuyButton= styled.div`
-
-width:13vw;
-text-align: center;
-font-family:Discgent;
+    width:50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-family: discgent;
     font-size:2vw;
     border: none;
     cursor: pointer;
+    color: white;
     border-radius: 10px;
     user-select: none;
     background: linear-gradient(to right, rgb(63,164,178), rgb(68,23,131));
@@ -421,55 +423,80 @@ return(
                         </SmallText>
                         </NodInfo>
                 </NodInfoContainer>
-                <NodBoxesBox>
-                <NodBoxesContainer>
-                    <BoxIcon name={"CAJA_1.gif"}/>
 
-                    <NodBoxesContent>
-                    <BoxTitle>DeadStock</BoxTitle>
-                        <NodBoxesText>
-                            <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
-                        <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
-                        </NodBoxesText>
-                        <BuyContainer>
-                        <SmallText><SmallTextGreen>250</SmallTextGreen> USDT DIGITAL</SmallText>
-                        <BuyButton onClick={async ()=> {await buy(1); }} >Buy Now</BuyButton>
-                        </BuyContainer>
-                    </NodBoxesContent>
-                </NodBoxesContainer>
-                <NodBoxesContainer>
-                    <BoxIcon name={"CAJA_2.gif"}/>
+                <div className="landing-fnf">
+                    {/*<img src="/icons/fnf.png"/>*/}
+                    <h1>8888</h1>
+                    <h2>Friends <strong>&</strong> Family</h2>
+                </div>
 
-                    <NodBoxesContent>
-                    <BoxTitle>HOLY GRAIL</BoxTitle>
-                        <NodBoxesText>
-                            <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
-                        <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
-                        <SmallText><SmallTextGreen>EXCLUSIVE</SmallTextGreen> MERCH</SmallText>
-                        </NodBoxesText>
-                        <BuyContainer>
-                        <SmallText><SmallTextGreen>500 USDT</SmallTextGreen> PHYGITALS</SmallText>
-                        <BuyButton  onClick={async ()=> {await buy(2); }} >Buy Now</BuyButton>
-                        </BuyContainer>
-                    </NodBoxesContent>
-                </NodBoxesContainer>
-                <NodBoxesContainer>
-                    <BoxIcon name={"CAJA_3.gif"}/>
+                <NodBoxesBox className="landing-nodebox-container">
+                    {/* DEADSTOCK */}
+                    <NodBoxesContainer className="landing-nodebox">
+                        <BoxIcon name={"CAJA_1.gif"}/>
+    
+                        <NodBoxesContent className="landing-nodebox-content">
+                            <BoxTitle className="landing-nodebox-boxtitle">DEADSTOCK</BoxTitle>
+                            <NodBoxesText className="landing-nodebox-boxcontent">
+                                <img src="icons/1.png"/>
+                                <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
 
-                    <NodBoxesContent>
-                    <BoxTitle>GOAT</BoxTitle>
-                        <NodBoxesText>
-                            <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
-                        <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
-                        <SmallText><SmallTextGreen>EXCLUSIVE</SmallTextGreen> MERCH</SmallText>
-                        <SmallText><SmallTextGreen>LUXURY</SmallTextGreen> BOX</SmallText>
-                        </NodBoxesText>
-                        <BuyContainer>
-                        <SmallText><SmallTextGreen>1000 USDT</SmallTextGreen> PHYGITALS</SmallText>
-                        <BuyButton  onClick={async ()=> {await buy(3); }} >Buy Now</BuyButton>
-                        </BuyContainer>
-                    </NodBoxesContent>
-                </NodBoxesContainer>
+                                <img src="icons/nfticon.png"/>
+                                <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
+                            </NodBoxesText>
+                            <BuyContainer>
+                            <SmallText className="landing-nodebox-footer"><SmallTextGreen className="landing-nodebox-footer">250</SmallTextGreen> USDT (DIGITAL)</SmallText>
+                            <BuyButton onClick={async ()=> {await buy(1); }} >Buy Now</BuyButton>
+                            </BuyContainer>
+                        </NodBoxesContent>
+                    </NodBoxesContainer>
+                    
+                    {/* HOLY GRAIL */}
+                    <NodBoxesContainer className="landing-nodebox">
+                        <BoxIcon name={"CAJA_2.gif"}/>
+
+                        <NodBoxesContent className="landing-nodebox-content">
+                            <BoxTitle className="landing-nodebox-boxtitle">HOLY GRAIL</BoxTitle>
+                            <NodBoxesText className="landing-nodebox-boxcontent">
+                                <img src="icons/1.png"/>
+                                <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
+
+                                <img src="icons/nfticon.png"/>
+                                <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
+
+                                <img src="/icons/Grupo 315.png"/>
+                                <SmallText>EXCLUSIVE<SmallTextGreen>MERCH</SmallTextGreen></SmallText>
+                            </NodBoxesText>
+                            <BuyContainer>
+                            <SmallText className="landing-nodebox-footer"><SmallTextGreen className="landing-nodebox-footer">500 USDT</SmallTextGreen> (PHYGITAL)</SmallText>
+                            <BuyButton  onClick={async ()=> {await buy(2); }} >Buy Now</BuyButton>
+                            </BuyContainer>
+                        </NodBoxesContent>
+                    </NodBoxesContainer>
+                    
+                    <NodBoxesContainer className="landing-nodebox">
+                        <BoxIcon name={"CAJA_3.gif"}/>
+
+                        <NodBoxesContent className="landing-nodebox-content">
+                        <BoxTitle className="landing-nodebox-boxtitle">GOAT</BoxTitle>
+                            <NodBoxesText className="landing-nodebox-boxcontent">
+                                <img src="icons/1.png"/>
+                                <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
+
+                                <img src="icons/nfticon.png"/>
+                                <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
+
+                                <img src="/icons/Grupo 315.png"/>
+                                <SmallText>EXCLUSIVE<SmallTextGreen>MERCH</SmallTextGreen></SmallText>
+                                <img src="icons/1.png"/>
+                                <SmallText><SmallTextGreen>LUXURY</SmallTextGreen> BOX</SmallText>
+                            </NodBoxesText>
+                            <BuyContainer>
+                            <SmallText className="landing-nodebox-footer"><SmallTextGreen className="landing-nodebox-footer">1000 USDT</SmallTextGreen> (PHYGITAL)</SmallText>
+                            <BuyButton  onClick={async ()=> {await buy(3); }} >Buy Now</BuyButton>
+                            </BuyContainer>
+                        </NodBoxesContent>
+                    </NodBoxesContainer>
                 </NodBoxesBox>
                 
                 
