@@ -59,6 +59,7 @@ max-width: 15vw;
 max-height: 10vh;
 `;
 const TopLeftIcons = styled(Icon)`
+cursor:pointer;
 max-width: 5vw;
 max-height: 3vh;
 `;
@@ -302,7 +303,7 @@ function handleMeta(){
 return(
 
         <MainContainer>
-            <script type="text/javascript" src="https//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+            <script type="text/javascript" src="https//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js" async/>
             <MainScreenContainer>
             <PortraitImage name={"landing-icon.png"}/>
             <TopLeftBar>
@@ -334,9 +335,9 @@ return(
         </TopMenuContainer>
         <TopIconContainer>
         <TopLeftIcons name={"opensea.svg"}/>
-            <TopLeftIcons name={"insta.svg"}/>
-            <TopLeftIcons name={"discord.svg"}/>
-            <TopLeftIcons name={"twitter.svg"}/>
+            <TopLeftIcons name={"insta.svg"}  onClick={() => window.open("https://www.instagram.com/snkrthenod.io/")}/>
+            <TopLeftIcons name={"discord.svg"  } onClick={() => window.open("https://discord.gg/ZnDvG7US")}/>
+            <TopLeftIcons name={"twitter.svg"} onClick={() => window.open("https://twitter.com/snkrthenod_io")}/>
             <TopLeftIcons name={"language.svg"}/>
             <MetaIcon name="meta.png" onClick={handleMeta} />
         </TopIconContainer>

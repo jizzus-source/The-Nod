@@ -46,6 +46,7 @@ height: 10vh;
 `;
 const TopLeftIcons = styled(Icon)`
 width: 5vw;
+cursor:pointer;
 height: 3vh;
 `;
 const BodyContainer = styled.div`
@@ -164,9 +165,9 @@ return(
             <TopRightIcon name={"logo.png"}/>
         </TopIconContainer>
             <TopIconContainer>
-                <TopLeftIcons name={"insta.svg"}/>
-                <TopLeftIcons name={"discord.svg"}/>
-                <TopLeftIcons name={"twitter.svg"}/>
+                <TopLeftIcons name={"insta.svg"}    onClick={() => window.open("https://www.instagram.com/snkrthenod.io/")}/>
+                <TopLeftIcons name={"discord.svg"}  onClick={() => window.open("https://discord.gg/ZnDvG7US")}/>
+                <TopLeftIcons name={"twitter.svg"}  onClick={() => window.open("https://twitter.com/snkrthenod_io")}/>
                 <TopLeftIcons name={"language.svg"}/>
             </TopIconContainer>
                 </TopLeftBar>
