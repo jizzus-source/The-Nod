@@ -9,9 +9,9 @@ let TokenContract: any;
 let NFTContract: any;
 let SellerContract: any;
 
-const SELLER_ADDRESS = "0x6DaD08f36cc3e0c94cD4c5ED4508E793447596AC";
-const NFT_ADDRESS = "0x742Dd0F2d16dF25c7Ca737c5f3841118a9C60F5a";
-const TOKEN_ADDRESS = "0xa8377aE6dC919712C31194277b89A023C4a604cC";
+const SELLER_ADDRESS = "0xff4ac32f8765fce7578f137f8a9b8873654703c6";
+const NFT_ADDRESS = "0xec838e7165ccf9541ff5eaf3e6bdd033c99f97ad";
+const TOKEN_ADDRESS = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
 const MAX_INT = "115792089237316195423570985008687907853269984665640564039457584007913129639935";
 const CHAINID = 1;
 
@@ -21,14 +21,9 @@ export function isMetaMaskInstalled(){
 
 export async function provider () {
     if (!_provider && isMetaMaskInstalled()) {
-        _provider = new ethers.providers.Web3Provider((window as any).ethereum);
+        _provider = new ethers.providers.Web3Provider((window as any).ethereum, 'any');
         await _provider.send("eth_requestAccounts", []);
         const signer = _provider.getSigner();
-
-        console.log({
-            CHAINID,
-            chainId: await getChainId()
-        })
         
         TokenContract = new ethers.Contract(TOKEN_ADDRESS, TokenContractABI, signer);
         NFTContract = new ethers.Contract(NFT_ADDRESS, NFTContractABI, signer);
