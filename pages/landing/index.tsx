@@ -240,7 +240,7 @@ const SmallTextGreen=styled.div`
 margin-right:10px;
 margin-left:10px;
 font-family: discgent;
-  font-size: 0.8vw;
+  font-size: 2vw;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -448,7 +448,7 @@ return(
                                 <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
                             </NodBoxesText>
                             <BuyContainer>
-                            <SmallText className="landing-nodebox-footer"><SmallTextGreen className="landing-nodebox-footer">250</SmallTextGreen> USDT (DIGITAL)</SmallText>
+                            <SmallText className="landing-nodebox-footer"><SmallTextGreen >250</SmallTextGreen> USDT (DIGITAL)</SmallText>
                             <BuyButton onClick={async ()=> {await buy(1); }} >Buy Now</BuyButton>
                             </BuyContainer>
                         </NodBoxesContent>
@@ -471,7 +471,7 @@ return(
                                 <SmallText>EXCLUSIVE<SmallTextGreen>MERCH</SmallTextGreen></SmallText>
                             </NodBoxesText>
                             <BuyContainer>
-                            <SmallText className="landing-nodebox-footer"><SmallTextGreen className="landing-nodebox-footer">500 USDT</SmallTextGreen> (PHYGITAL)</SmallText>
+                            <SmallText className="landing-nodebox-footer"><SmallTextGreen>500 USDT</SmallTextGreen> (PHYGITAL)</SmallText>
                             <BuyButton  onClick={async ()=> {await buy(2); }} >Buy Now</BuyButton>
                             </BuyContainer>
                         </NodBoxesContent>
@@ -495,7 +495,7 @@ return(
                                 <SmallText><SmallTextGreen>LUXURY</SmallTextGreen> BOX</SmallText>
                             </NodBoxesText>
                             <BuyContainer>
-                            <SmallText className="landing-nodebox-footer"><SmallTextGreen className="landing-nodebox-footer">1000 USDT</SmallTextGreen> (PHYGITAL)</SmallText>
+                            <SmallText className="landing-nodebox-footer"><SmallTextGreen >1000 USDT</SmallTextGreen> (PHYGITAL)</SmallText>
                             <BuyButton  onClick={async ()=> {await buy(3); }} >Buy Now</BuyButton>
                             </BuyContainer>
                         </NodBoxesContent>
