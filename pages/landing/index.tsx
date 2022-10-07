@@ -1,10 +1,11 @@
 
 import type { NextPage } from 'next';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import Icon from '../../components/icon';
 import LoginModal from '../../components/register-modal';
+import { buy, provider } from '../../components/metamask';
 
 
 
@@ -48,8 +49,7 @@ const TopLeftBar = styled.div`
 const TopIconContainer = styled.div`
     display:flex;
     align-items: center;
-    justify-content: flex-start;
-    gap:1rem;
+    gap:1em;
 `
 const TopRightIcon = styled(Icon)`
 max-width: 15vw;
@@ -131,7 +131,6 @@ display:flex;
 flex-direction:row;
 flex-wrap: wrap;
 justify-content: flex-start;
-
 font-family: Monserrat;
   font-size: 1.4vw;
   font-weight: normal;
@@ -146,15 +145,12 @@ font-family: Monserrat;
 const Button = styled.div`
 display:flex;
 justify-content: center
-width:10vw;
 font-family:Discgent;
-    font-size:2vw;
+    font-size:1vw;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
     user-select: none;
-    background: linear-gradient(to right, rgb(63,164,178), rgb(68,23,131));
-    user-select: none;
+
 `;
 const Footer = styled.div`
 position: absolute;
@@ -169,9 +165,10 @@ const IconsContainer = styled.div`
 margin-top:6rem;
 `;
 const TopMenuContainer =styled.div`
+gap:1em;
 display:flex;
 align-items: center;
-justify-content: space-between;
+
 `;
 const ScrollImage=styled(Icon)`
 position:absolute;
@@ -220,22 +217,23 @@ display:flex;
 flex-direction:row;
 margin-top:4rem;
 border:1px solid #ccccb3;
-
-width: 40vw;
+background-color: #333;
+width: 70vw;
 align-items: center;
 `
 const BoxIcon=styled(Icon)`
-width:20vw;
+border:1px solid #ccccb3;
+width:30vw;
 `;
 const NodBoxesContent=styled.div`
 display:flex;
 flex-direction:column;
-align-items: center
-
+align-items: center;
 
 `;
 const SmallTextGreen=styled.div`
-margin-right:5px;
+margin-right:10px;
+margin-left:10px;
 font-family: Monserrat;
   font-size: 1.4vw;
   font-weight: normal;
@@ -245,15 +243,61 @@ font-family: Monserrat;
   letter-spacing: normal;
   text-align: left;
   color: #73cd37;
-`
+`;
+const BuyButton= styled.div`
 
+width:13vw;
+text-align: center;
+font-family:Discgent;
+    font-size:2vw;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    user-select: none;
+    background: linear-gradient(to right, rgb(63,164,178), rgb(68,23,131));
+    user-select: none;
+`;
+const BoxTitle=styled.div`
+margin-bottom:1em;
+font-weight:bold;
+text-align: center;
+width:30vw;
+font-size:5vw;
+ont-family: Discgent;
+background-color:white;
+color:rgb(51, 51, 51);
+`;
+const NodBoxesText =styled.div`
+display:flex;
+flex-direction:column;
+align-items: flex-start
+`;
+const BuyContainer= styled.div`
+margin-top:1em;
+display:flex;
+flex-direction:column;
+align-items: center
+`;
+const NodBoxesBox = styled.div`
+display:flex;
+flex-direction:row;
+max-width: 100vw;
+justify-content: flex-start;
+overflow-x: scroll;
+`;
+const MetaIcon = styled(Icon)`
+cursor:pointer;
+max-width:8vw;`;
 
 
 const Landing = () => {
   const router = useRouter();
 
-
+function handleMeta(){
+    provider()
+};
 return(
+
         <MainContainer>
             <MainScreenContainer>
             <PortraitImage name={"landing-icon.png"}/>
@@ -290,7 +334,7 @@ return(
             <TopLeftIcons name={"discord.svg"}/>
             <TopLeftIcons name={"twitter.svg"}/>
             <TopLeftIcons name={"language.svg"}/>
-            
+            <MetaIcon name="meta.png" onClick={handleMeta} />
         </TopIconContainer>
         </TopLeftBar>
         <ScrollImage name={"scroll.png"}/>
@@ -339,17 +383,60 @@ return(
                         </SmallText>
                         </NodInfo>
                 </NodInfoContainer>
+                <NodBoxesBox>
                 <NodBoxesContainer>
                     <BoxIcon name={"box-1.png"}/>
+
                     <NodBoxesContent>
-                        <SubTitle>DeadStock</SubTitle>
-                        <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
+                    <BoxTitle>DeadStock</BoxTitle>
+                        <NodBoxesText>
+                            <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
                         <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
+                        </NodBoxesText>
+                        <BuyContainer>
                         <SmallText><SmallTextGreen>250</SmallTextGreen> USDT DIGITAL</SmallText>
-                        <Button >Join Now</Button>
+                        <BuyButton onClick={async ()=> {await buy(1); }} >Buy Now</BuyButton>
+                        </BuyContainer>
                     </NodBoxesContent>
                 </NodBoxesContainer>
+                <NodBoxesContainer>
+                    <BoxIcon name={"box-2.png"}/>
+
+                    <NodBoxesContent>
+                    <BoxTitle>HOLY GRAIL</BoxTitle>
+                        <NodBoxesText>
+                            <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
+                        <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
+                        <SmallText><SmallTextGreen>EXCLUSIVE</SmallTextGreen> MERCH</SmallText>
+                        </NodBoxesText>
+                        <BuyContainer>
+                        <SmallText><SmallTextGreen>500 USDT</SmallTextGreen> PHYGITALS</SmallText>
+                        <BuyButton  onClick={async ()=> {await buy(2); }} >Buy Now</BuyButton>
+                        </BuyContainer>
+                    </NodBoxesContent>
+                </NodBoxesContainer>
+                <NodBoxesContainer>
+                    <BoxIcon name={"box-3.png"}/>
+
+                    <NodBoxesContent>
+                    <BoxTitle>GOAT</BoxTitle>
+                        <NodBoxesText>
+                            <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
+                        <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
+                        <SmallText><SmallTextGreen>EXCLUSIVE</SmallTextGreen> MERCH</SmallText>
+                        <SmallText><SmallTextGreen>LUXURY</SmallTextGreen> BOX</SmallText>
+                        </NodBoxesText>
+                        <BuyContainer>
+                        <SmallText><SmallTextGreen>1000 USDT</SmallTextGreen> PHYGITALS</SmallText>
+                        <BuyButton  onClick={async ()=> {await buy(3); }} >Buy Now</BuyButton>
+                        </BuyContainer>
+                    </NodBoxesContent>
+                </NodBoxesContainer>
+                </NodBoxesBox>
+                
+                
                 </PrincipalContainer>
+                
             
             </BodyContainer>
         </MainContainer>

@@ -8,10 +8,7 @@ import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Icon from "./icon";
 import { ethers, providers } from "ethers";
-import {isMetaMaskInstalled, provider} from "./metamask";
-import { AlertContext } from "./alert";
-import { AlertType } from "./alertModal";
-import SuccesModal from "./succes-modal";
+import {ethAccount, isMetaMaskInstalled, provider} from "./metamask";
 
 
 interface Props {
@@ -24,8 +21,7 @@ background-color:transparent;
 display: flex;
 flex-direction: row;
 align-items: center;
-position:relative;
-width:50vw;
+
 `;
 
 const TitleContainer = styled.div `
@@ -46,14 +42,12 @@ const Form = styled.div`
     flex-direction: column;
     width: 100%;
     gap: 20px;
-    
 `;
 const LoginModalContent = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
 margin-left:20px;
-width:20vw;
 `;
 
 const IconContainer = styled.div`
@@ -72,26 +66,28 @@ width:100%;
 const RegisterIconContainer = styled.div`
 width:15vw;
 `;
+const FormContainer = styled.div`
+display: flex;
+flex-direction: row;
+
+`
 const LoginModal = (props: Props) => {
-    const alertContext: any = useContext(AlertContext);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [country, setCountry] = useState("");
     const [phone, setPhone] = useState("");
-    function handleRegister(){
-        const content: any = (
-            <SuccesModal></SuccesModal> 
-        )
-        if (username != "" && email != "" &&  country !="" && phone!="") {
-            alertContext.createAlert({ type: AlertType.FAILURE, title: "Error en los datos", message: "Debes ingresar todos los datos solicitados" });
-        } else {
-            alertContext.createAlert({ type: AlertType.CUSTOM, content: content });
-        }
-       
+    const [wallet, setWallet]= useState("");
+
+    async function handleWalletRegister(){
+        provider();
     }
 
+    function handleRegister(){
+        if(username!="" && email!=""){
+            props.onClickLogin({username, email});
+        }
+    }
     
-    console.log(provider())
     return(
         <LoginModalContainer>
             <RegisterIconContainer>
@@ -104,12 +100,12 @@ const LoginModal = (props: Props) => {
             <Form>
                 <FormInput value={username} onChange={(value: string)=>setUsername(value)} placeholder="Full Name" type={InputTypes.TEXT} />
                 <FormInput value={email} onChange={(value: string)=>setEmail(value)} placeholder="Email" type={InputTypes.TEXT} />
-                
+                <FormContainer>
                 <FormInput value={country} onChange={(value: string)=>setCountry(value)} placeholder="Country" type={InputTypes.TEXT} />
                 <FormInput value={phone} onChange={(value: string)=>setPhone(value)} placeholder="Phone" type={InputTypes.TEXT} />
-
+                </FormContainer>
                 <IconContainer>
-                <MetaIcon name="meta.png"/>
+                <MetaIcon name="meta.png" onClick={handleWalletRegister} />
                 <RegularButton text="Submit" onClick={handleRegister} />
                 </IconContainer>
             </Form>
