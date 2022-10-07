@@ -170,8 +170,6 @@ function handleLoginPrimary({ username, email }: { username: string, email: stri
 }
   return (
     <MainContainer>
-      
-      <script type="text/javascript" src="https//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
       <HomeContainer>
         <PortraitImage name={"land.jpg"}/>
       <BodyContainer>
