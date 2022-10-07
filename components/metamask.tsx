@@ -13,25 +13,45 @@ const SELLER_ADDRESS = "0x6DaD08f36cc3e0c94cD4c5ED4508E793447596AC";
 const NFT_ADDRESS = "0x742Dd0F2d16dF25c7Ca737c5f3841118a9C60F5a";
 const TOKEN_ADDRESS = "0xa8377aE6dC919712C31194277b89A023C4a604cC";
 const MAX_INT = "115792089237316195423570985008687907853269984665640564039457584007913129639935";
+const CHAINID = 1;
 
 export function isMetaMaskInstalled(){
     return (window as any).ethereum != undefined;
 }
 
 export async function provider () {
-    if (_provider !== undefined) return _provider;
-
-    if (isMetaMaskInstalled()) {
+    if (!_provider && isMetaMaskInstalled()) {
         _provider = new ethers.providers.Web3Provider((window as any).ethereum);
         await _provider.send("eth_requestAccounts", []);
         const signer = _provider.getSigner();
-        console.log("Account:", await signer.getAddress());
+
+        console.log({
+            CHAINID,
+            chainId: await getChainId()
+        })
+        
         TokenContract = new ethers.Contract(TOKEN_ADDRESS, TokenContractABI, signer);
         NFTContract = new ethers.Contract(NFT_ADDRESS, NFTContractABI, signer);
         SellerContract = new ethers.Contract(SELLER_ADDRESS, SellerContractABI, signer);
     }
 
+
+    if (await getChainId() != CHAINID) {
+        await (window as any).ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x1' }], // chainId must be in hexadecimal numbers
+        });
+
+        await provider();
+    }
+
+    (window as any).ethereum.on('accountChanged', async () => { _provider = null; await provider() });
+    (window as any).ethereum.on('chainChanged', async () => { _provider = null; await provider() });
+
     return _provider;
+}
+
+export async function reloadProvider () {
 }
 
 export async function ethAccount () {
@@ -49,6 +69,16 @@ export async function allowance () {
 export async function approve () {
     await provider();
     return await TokenContract.approve(SELLER_ADDRESS, MAX_INT);
+}
+
+export async function getChainId () {
+    return (await _provider.getNetwork()).chainId;
+}
+
+export async function ensureChain(chainId: number) {
+    const chainid = await getChainId();
+
+    if (chainid === chainId) return;
 }
 
 export async function buy (rarity: number) {
