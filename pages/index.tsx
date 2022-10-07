@@ -1,14 +1,15 @@
-import type { NextPage } from 'next';
+
 import { useContext } from 'react';
 import styled from "styled-components";
 import { AlertContext } from '../components/alert';
 import { AlertType } from '../components/alertModal';
 import Icon from '../components/icon';
 import LoginModal from '../components/register-modal';
+import MainScreen from './mainscreen';
+import * as lodash from "lodash";
 
 
-
-
+((global || window) as any)._ = lodash;
 
 const MainContainer = styled.div`
     height: 100vh;
@@ -157,7 +158,6 @@ const Home = () => {
     const content: any = (
         <LoginModal onClickLogin={({ username, email }: { username: string, email: string }) => handleLoginPrimary({ username, email })} onClose={alertContext.closeAlert} />
     );
-    console.log(alertContext.createAlert)
     alertContext.createAlert({ type: AlertType.CUSTOM, content: content });
    
 }
@@ -170,6 +170,8 @@ function handleLoginPrimary({ username, email }: { username: string, email: stri
 }
   return (
     <MainContainer>
+      
+      <script type="text/javascript" src="https//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
       <HomeContainer>
         <PortraitImage name={"land.jpg"}/>
       <BodyContainer>
@@ -216,4 +218,5 @@ function handleLoginPrimary({ username, email }: { username: string, email: stri
   )
 }
 
-export default Home
+export default MainScreen
+

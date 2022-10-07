@@ -8,7 +8,7 @@ import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Icon from "./icon";
 import { ethers, providers } from "ethers";
-import {isMetaMaskInstalled, provider} from "./metamask";
+import {ethAccount, isMetaMaskInstalled, provider} from "./metamask";
 
 
 interface Props {
@@ -76,13 +76,18 @@ const LoginModal = (props: Props) => {
     const [email, setEmail] = useState("");
     const [country, setCountry] = useState("");
     const [phone, setPhone] = useState("");
+    const [wallet, setWallet]= useState("");
+
+    async function handleWalletRegister(){
+        provider();
+    }
+
     function handleRegister(){
         if(username!="" && email!=""){
             props.onClickLogin({username, email});
         }
     }
     
-    console.log(provider())
     return(
         <LoginModalContainer>
             <RegisterIconContainer>
@@ -100,7 +105,7 @@ const LoginModal = (props: Props) => {
                 <FormInput value={phone} onChange={(value: string)=>setPhone(value)} placeholder="Phone" type={InputTypes.TEXT} />
                 </FormContainer>
                 <IconContainer>
-                <MetaIcon name="meta.png"/>
+                <MetaIcon name="meta.png" onClick={handleWalletRegister} />
                 <RegularButton text="Submit" onClick={handleRegister} />
                 </IconContainer>
             </Form>
