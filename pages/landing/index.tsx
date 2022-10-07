@@ -23,7 +23,6 @@ const MainContainer = styled.div`
 `;
 const PortraitImage = styled(Icon)`
   width: 100vw;
-  height: 100vh;
 `;
 const BackgroundImage = styled(Icon)`
 width:100vw;
@@ -82,9 +81,9 @@ gap:1rem;
 `;
 const PrincipalTitle = styled.div`
 margin-top:10rem;
- font-family: Discgent;
-flex-direction: column;
-display: flex;
+  font-family: Discgent;
+  flex-direction: column;
+  display: flex;
   font-size: 8vw;
   font-weight: normal;
   font-stretch: normal;
@@ -121,7 +120,8 @@ const SubTitle = styled.div`
   line-height: 0.98;
   letter-spacing: normal;
   text-align: center;
-  color: #fff;`;
+  color: #fff;
+`;
 
 const SmallTextContainer = styled.div`
 position:absolute;
@@ -203,14 +203,14 @@ margin-top:3rem;
 gap:2rem;
 `;
 const NodInfo =styled.div`
-display:flex;
-flex-direction:column;
-box-shadow: rgb(0 0 0) 0px 0px 12px 0px;
-max-width:20vw;
-border:1px solid #73cd37;
-align-items: flex-start;
-justify-content: center
-
+    display: grid;
+    grid-template-rows: 30% 20% 50%;
+    box-shadow: rgb(0 0 0) 0px 0px 12px 0px;
+    max-width:20vw;
+    border:1px solid rgba(115, 205, 55, 0.5);
+    align-items: flex-start;
+    justify-content: center;
+    border-raz|1dius: 5px;
 `;
 const NodBack=styled(Icon)`
 max-width:20vw;
@@ -353,37 +353,70 @@ return(
                     <CollabsIcons name={"collab-2.png"}/>
                     <CollabsIcons name={"collab-3.png"}/>
                 </CollabsContainer>
-                <PrincipalTitle>THE NOD</PrincipalTitle>
-                <NodInfoContainer>
-                    <NodInfo>
-                        <NodBack name={"nod.png"}/>
-                    </NodInfo>
-                    <NodInfo>
-                        <PrinpcipalTitleContainer>
-                             <SubTitle>2</SubTitle>
-                             <SubTitle>Ai SCAN</SubTitle>
+                
+                <PrincipalTitle><div>
+                    <span className="landing-title-black">THE </span>
+                    <span className="landing-title-white">NOD</span>
+                </div></PrincipalTitle>
+
+                <NodInfoContainer className="landing-nodinfo-container">
+                    {/* First NodInfo */}
+                    <NodInfo className="landing-nodinfo-fifo">
+                        <div className="landing-nodinfo-img">
+                            <img src="/icons/Grupo 326.png"/>
+                        </div>
+                        <PrinpcipalTitleContainer className="landing-nodinfo-subtitle-container">
+                             <SubTitle className="landing-nodinfo-subtitle-number">1</SubTitle>
+                             <SubTitle className="landing-nodinfo-subtitle-name">KEY ACCESS</SubTitle>
                         </PrinpcipalTitleContainer>
 
-                        <SmallText>
+                        <SmallText className="landing-nodinfo-subtitle-smalltext">
+                        By getting one NFT Case you obtain your Key(s) to validate your Kicks. Make sure to HODL it. IMPORTANT: In the F&F Collection, the Keys are half price.
+                        </SmallText>
+                    </NodInfo>
+                    
+                    {/* AI Scanner*/}
+                    <NodInfo className='landing-nodinfo'>
+                        <div className="landing-nodinfo-img">
+                            <img src="/icons/Grupo 313.png"/>
+                        </div>
+                        <PrinpcipalTitleContainer className="landing-nodinfo-subtitle-container">
+                             <SubTitle className="landing-nodinfo-subtitle-number">2</SubTitle>
+                             <SubTitle className="landing-nodinfo-subtitle-name">AI SCANNER</SubTitle>
+                        </PrinpcipalTitleContainer>
+
+                        <SmallText className="landing-nodinfo-subtitle-smalltext">
                         Scan your OG Kicks. Other shoe details will be required, such as labels, sewings, outsole, etc. The images will be analyzed thought Artificial Intelligence. This  first step  will determine if your kicks are OG or fake.
                         </SmallText>
                     </NodInfo>
-                    <NodInfo><PrinpcipalTitleContainer>
-                             <SubTitle>3</SubTitle>
-                             <SubTitle>VALIDATION & COMMUNITY</SubTitle>
+
+                    {/* Validation & Community */}
+                    <NodInfo className='landing-nodinfo'>
+                        <div className="landing-nodinfo-img">
+                            <img src="/icons/Grupo 315.png"/>
+                        </div>
+                        <PrinpcipalTitleContainer className="landing-nodinfo-subtitle-container">
+                             <SubTitle className="landing-nodinfo-subtitle-number">3</SubTitle>
+                             <SubTitle className="landing-nodinfo-subtitle-name">VALIDATION & COMMUNITY</SubTitle>
                         </PrinpcipalTitleContainer>
 
-                        <SmallText>
-                        Your kicks will be audited by THE NOD community, based on AI  percentage  of authenticity. ATTENTION, you could be rewarded or penalized with points, based on your kicks authenticity.
+                        <SmallText className="landing-nodinfo-subtitle-smalltext">
+                            Your kicks will be audited by THE NOD community, based on AI  percentage  of authenticity. ATTENTION, you could be rewarded or penalized with points, based on your kicks authenticity.
+                            You can become a validator and participate in audits. Show to the world your SNEAKERS IQ.
                         </SmallText>
-                        <SmallText>You can become a validator and participate in audits. Show to the world your SNEAKERS IQ.</SmallText>
-                        </NodInfo>
-                    <NodInfo><PrinpcipalTitleContainer>
-                             <SubTitle>4</SubTitle>
-                             <SubTitle>BUILD UP YOUR SHOWCASE</SubTitle>
+                    </NodInfo>
+
+                    {/* Build Up Your Showcase */}
+                    <NodInfo className='landing-nodinfo'>
+                        <div className="landing-nodinfo-img">
+                            <img src="/icons/Grupo 319.png"/>
+                        </div>
+                        <PrinpcipalTitleContainer className="landing-nodinfo-subtitle-container">
+                             <SubTitle className="landing-nodinfo-subtitle-number">4</SubTitle>
+                             <SubTitle className="landing-nodinfo-subtitle-name">BUILD UP<br/>YOUR SHOWCASE</SubTitle>
                         </PrinpcipalTitleContainer>
 
-                        <SmallText>
+                        <SmallText className="landing-nodinfo-subtitle-smalltext">
                         After getting your authenticity result with the help of AI, you will receive a phygital  NFT. This will store your OG authenticity data for life. You will also receive a physical tag which you can put on your kicks and invite your friends with the code to see your personal kicks collection showcase.
                         </SmallText>
                         </NodInfo>

@@ -2,6 +2,22 @@
   font-family: 'discgent';
   src: url('/fonts/Discgent.ttf');
 }
+
+@font-face {
+  font-family: 'montserrat-bold';
+  src: url('/fonts/Montserrat-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('/fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'discgent-outline';
+  src: url('/fonts/Discgent Outline.ttf');
+}
+
 html,
 body {
   padding: 0;
@@ -9,7 +25,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 
@@ -32,7 +47,7 @@ a {
   }
   body {
     color: white;
-    background: black;
+    background-color: black;
   }
 }
 
@@ -96,5 +111,83 @@ a {
 }
 
 body{
-  background-color: #73e637;
+  background-color: rgb(51,51,51);
+}
+
+
+.landing-title-black {
+  font-family: discgent-outline !important;
+  color: 'black';
+}
+
+.landing-nodinfo-img {
+  display: grid;
+  padding-left: 20px;
+  height: 100%;
+}
+
+.landing-nodinfo-img img {
+  align-self: flex-end !important;
+}
+
+.landing-nodinfo-subtitle-number {
+  font-family: discgent-outline !important;
+  padding-left: 0.3em;
+  font-size: 5em !important;
+}
+
+.landing-nodinfo-subtitle-name {
+  font-family: discgent !important;
+  font-size: 20px !important;
+  text-align: left !important;
+  padding-left: 2em;
+}
+
+.landing-nodinfo-subtitle-container {
+  display: grid !important;
+  grid-template-columns: 20% 80% !important;
+  width: 100% !important;
+  padding-top: 1.6em;
+}
+
+.landing-nodinfo-subtitle-smalltext {
+  padding: 1em;
+  font-family: montserrat-bold !important;
+  font-size: 1em !important;
+  text-align: justify !important;
+}
+
+.landing-nodinfo {
+  border-radius: 5px !important;
+  height: 600px !important;
+}
+
+.landing-nodinfo-fifo {
+  border-radius: 5px !important;
+  height: 600px !important;
+  background: url("/icons/nod.png");
+  background-position-x: -50px;
+}
+
+.landing-nodinfo-fifo .landing-nodinfo-subtitle-container .landing-nodinfo-subtitle-name,
+.landing-nodinfo-fifo .landing-nodinfo-subtitle-container .landing-nodinfo-subtitle-number,
+.landing-nodinfo-fifo .landing-nodinfo-subtitle-smalltext {
+  color: rgb(51,51,51) !important;
+}
+
+.landing-nodinfo-fifo .landing-nodinfo-subtitle-container .landing-nodinfo-subtitle-number {
+  font-family: discgent !important;
+}
+
+@media screen and (max-width: 800px) {
+  .landing-nodinfo-container {
+    display: grid !important;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto !important;
+  }
+
+  .landing-nodinfo, .landing-nodinfo-fifo {
+    width: 80vw !important;
+    max-width: 80vw !important;
+  }
 }
