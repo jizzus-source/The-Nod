@@ -7,9 +7,9 @@ import { AlertType } from '../components/alertModal';
 import Icon from '../components/icon';
 import { buy } from '../components/metamask';
 import LoginModal from '../components/register-modal';
+import * as lodash from "lodash";
 
-
-
+((global || window) as any)._ = lodash;
 
 
 const MainContainer = styled.div`
@@ -171,7 +171,8 @@ function handleLoginPrimary({ username, email }: { username: string, email: stri
 }
   return (
     <MainContainer>
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+      
+      <script type="text/javascript" src="https//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
       <HomeContainer>
         <PortraitImage name={"land.jpg"}/>
       <BodyContainer>

@@ -4,10 +4,8 @@ import { AlertProvider } from '../components/alert'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (<AlertProvider>
-    
-    <Component {...pageProps} />
-  
-      </AlertProvider>)
+      <Component {...pageProps} />
+  </AlertProvider>)
 }
 
 export default MyApp
