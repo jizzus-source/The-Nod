@@ -77,7 +77,6 @@ justify-content: center;
 gap:1rem;
 
 
-
 `;
 const PrincipalTitle = styled.div`
 margin-top:10rem;
@@ -113,7 +112,6 @@ margin-left:7rem;
 margin-top:7rem;
 `;
 const SubTitle = styled.div`
-  font-size: 2.5vw;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -132,19 +130,10 @@ justify-content: space-between;
 bottom:10vh;`;
 const SmallText = styled.div`
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     flex-wrap: wrap;
     justify-content: flex-start;
-    font-family: discgent;
-    font-size: 0.8vw;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.17;
-    letter-spacing: normal;
-    text-align: left;
-    color: #fff;
-    
+
 `;
 const Button = styled.div`
 display:flex;
@@ -207,11 +196,10 @@ const NodInfo =styled.div`
     display: grid;
     grid-template-rows: 30% 20% 50%;
     box-shadow: rgb(0 0 0) 0px 0px 12px 0px;
-    max-width:20vw;
+    max-width:22vw;
     border:1px solid rgba(115, 205, 55, 0.5);
     align-items: flex-start;
     justify-content: center;
-    border-razdius: 5px;
 `;
 const NodBack=styled(Icon)`
 max-width:20vw;
@@ -397,7 +385,7 @@ return(
 
                     {/* Validation & Community */}
                     <NodInfo className='landing-nodinfo'>
-                        <div className="landing-nodinfo-img">
+                        <div className="landing-nodinfo-img1">
                             <img src="/icons/Grupo 315.png"/>
                         </div>
                         <PrinpcipalTitleContainer className="landing-nodinfo-subtitle-container">
@@ -413,7 +401,7 @@ return(
 
                     {/* Build Up Your Showcase */}
                     <NodInfo className='landing-nodinfo'>
-                        <div className="landing-nodinfo-img">
+                        <div className="landing-nodinfo-img1">
                             <img src="/icons/Grupo 319.png"/>
                         </div>
                         <PrinpcipalTitleContainer className="landing-nodinfo-subtitle-container">
@@ -448,7 +436,7 @@ return(
                                 <SmallText>NFT EXCLUSIVE BY<SmallTextGreen>GUACHE ART</SmallTextGreen></SmallText>
                             </NodBoxesText>
                             <BuyContainer>
-                            <SmallText className="landing-nodebox-footer"><SmallTextGreen >250</SmallTextGreen> USDT (DIGITAL)</SmallText>
+                            <SmallText className="landing-nodebox-footer"><SmallTextGreen>250</SmallTextGreen> USDT (DIGITAL)</SmallText>
                             <BuyButton onClick={async ()=> {await buy(1); }} >Buy Now</BuyButton>
                             </BuyContainer>
                         </NodBoxesContent>

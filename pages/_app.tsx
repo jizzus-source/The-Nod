@@ -3,7 +3,8 @@ import type { AppProps } from 'next/app'
 import { AlertProvider } from '../components/alert'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (<AlertProvider>
+  return (
+  <AlertProvider>
       <Component {...pageProps} />
   </AlertProvider>)
 }
