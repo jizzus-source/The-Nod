@@ -449,7 +449,7 @@ return(
                         <NodBoxesContent className="landing-nodebox-content">
                             <BoxTitle className="landing-nodebox-boxtitle">HOLY GRAIL</BoxTitle>
                             <NodBoxesText className="landing-nodebox-boxcontent">
-                                <img src="icons/1.png"/>
+                                <img src="icons/3.png"/>
                                 <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
 
                                 <img src="icons/nfticon.png"/>
@@ -471,7 +471,7 @@ return(
                         <NodBoxesContent className="landing-nodebox-content">
                         <BoxTitle className="landing-nodebox-boxtitle">GOAT</BoxTitle>
                             <NodBoxesText className="landing-nodebox-boxcontent">
-                                <img src="icons/1.png"/>
+                                <img src="icons/7.png"/>
                                 <SmallText>LEGITIMACY KEYS TO YOUR <SmallTextGreen>SHOWCASE</SmallTextGreen> </SmallText>
 
                                 <img src="icons/nfticon.png"/>
@@ -479,7 +479,7 @@ return(
 
                                 <img src="/icons/Grupo 315.png"/>
                                 <SmallText>EXCLUSIVE<SmallTextGreen>MERCH</SmallTextGreen></SmallText>
-                                <img src="icons/1.png"/>
+                                <img src="icons/luxury.png"/>
                                 <SmallText><SmallTextGreen>LUXURY</SmallTextGreen> BOX</SmallText>
                             </NodBoxesText>
                             <BuyContainer>
